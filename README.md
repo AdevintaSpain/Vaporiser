@@ -11,6 +11,33 @@ dependencies: [
 ],
 ```
 
+Simple usage example can be viewed [here](https://github.com/AdevintaSpain/Vaporiser/blob/main/Example/ExampleUITests/ExampleUITests.swift)
+
+1. Async start the server:
+
+```
+try server.start()
+```
+
+2. Add mocks using
+
+```
+server.store(
+    mock: MockData(
+        path: "path/mock/responds/to",
+        payload: Data,
+        method: HTTPMethod
+    )
+)
+```
+
+3. Stop server on `tearDown`
+
+```
+server.stop()
+```
+
+
 ## Notes
 
 Example project uses [this server](https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html), which is being mocked in the XCUI tests.
