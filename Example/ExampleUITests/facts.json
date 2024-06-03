@@ -1,0 +1,288 @@
+[
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "64303745d56bfe7a06ce8484",
+    "user": "6429ddc0ebd89aad30b1f31d",
+    "text": "Cats have 9 lives",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2023-04-07T15:31:17.324Z",
+    "updatedAt": "2023-04-07T15:31:17.324Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "6572085aed3ec74c45993468",
+    "user": "656c637e61a5887a6426a76d",
+    "text": "A cat was the Mayor of an Alaskan town for 20 years.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2023-12-07T18:00:58.693Z",
+    "updatedAt": "2023-12-07T18:00:58.693Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "651b086b902b3635ffba9618",
+    "user": "650ff2a0dec4a0a94011a80c",
+    "text": "Big cats are very funny.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2023-10-02T18:14:03.613Z",
+    "updatedAt": "2023-10-02T18:14:03.613Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "64a336b38c3e7072c61853cf",
+    "user": "649f286f5d8933eb493aec6f",
+    "text": "Ddf.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2023-07-03T20:59:31.405Z",
+    "updatedAt": "2023-07-03T20:59:31.405Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": true,
+      "sentCount": 1
+    },
+    "_id": "59a60b8e6acf530020f3586e",
+    "updatedAt": "2020-09-20T20:20:01.101Z",
+    "createdAt": "2018-04-10T20:20:03.315Z",
+    "user": "5a9ac18c7478810ea6c06381",
+    "text": "Cat owners are 17% more likely to have a graduate degree than non cat owners.",
+    "deleted": false,
+    "source": "user",
+    "__v": 0,
+    "type": "cat",
+    "used": true
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "62701cce14e51b84dcca2596",
+    "user": "6262fc13f782346dbf6643ac",
+    "text": "CAPITAL LETTERS TEXT ABOUT CATS.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2022-05-02T18:02:54.322Z",
+    "updatedAt": "2022-05-02T18:02:54.322Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "64343a23f78b237ac514e9dc",
+    "user": "6425cf48866f4c47ad4716fb",
+    "text": "Hello c.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2023-04-10T16:32:35.433Z",
+    "updatedAt": "2023-04-10T16:32:35.433Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "6404f2c8ebdaaca99be58b05",
+    "user": "63fb745efcf661e5a0978073",
+    "text": "I need cats.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2023-03-05T19:51:36.284Z",
+    "updatedAt": "2023-03-05T19:51:36.284Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "6404de277ef7aa816f4b26eb",
+    "user": "6401ebe87a58d8cce34e0308",
+    "text": "...",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2023-03-05T18:23:35.502Z",
+    "updatedAt": "2023-03-05T18:23:35.502Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "65eefebb58029d9661acd43e",
+    "user": "65e5ed9d1bbc3a96679d09f3",
+    "text": "Cats no eat me.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2024-03-11T12:53:15.321Z",
+    "updatedAt": "2024-03-11T12:53:15.321Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": true,
+      "sentCount": 1
+    },
+    "_id": "591f98783b90f7150a19c1c7",
+    "__v": 0,
+    "text": "It is estimated that cats can make over 60 different sounds.",
+    "source": "api",
+    "updatedAt": "2020-08-23T20:20:01.611Z",
+    "type": "cat",
+    "createdAt": "2018-05-15T20:20:02.794Z",
+    "deleted": false,
+    "used": false,
+    "user": "5a9ac18c7478810ea6c06381"
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "6272ae387a4aadc755f96bea",
+    "user": "626830ba4514425908fc9af5",
+    "text": "Very new nwe facts.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2022-05-04T16:47:52.502Z",
+    "updatedAt": "2022-05-04T16:47:52.502Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "64f2dec6dc6815d54fd88ca5",
+    "user": "64e88752f2f14a8a1a5e7cba",
+    "text": "My test about cat.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2023-09-02T07:05:42.699Z",
+    "updatedAt": "2023-09-02T07:05:42.699Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": true,
+      "sentCount": 1
+    },
+    "_id": "5b453e380fd3a600147f32f3",
+    "updatedAt": "2020-08-23T20:20:01.611Z",
+    "createdAt": "2018-07-12T20:20:06.141Z",
+    "user": "5a9ac18c7478810ea6c06381",
+    "text": "Exposure to UV light with hairless or partially-hairless cats can result in sunburn, even during cloudy or shady conditions. If your cat risks overexposure, consider applying sunscreen daily.",
+    "deleted": false,
+    "source": "user",
+    "__v": 0,
+    "type": "cat",
+    "used": false
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "65ad4cca2976af79f38d0c8c",
+    "user": "65a10ce7ae41a9d2cca4f2e2",
+    "text": "*/*/*/********.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2024-01-21T16:56:42.532Z",
+    "updatedAt": "2024-01-21T16:56:42.532Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "62a7348447a75f7c3fb35945",
+    "user": "62684a4d4514425908fcbd03",
+    "text": "I am cat.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2022-06-13T12:58:44.939Z",
+    "updatedAt": "2022-06-13T12:58:44.939Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "626c1ad341f4aa428ac1a670",
+    "user": "626295ace96c0329fb1d7d6d",
+    "text": "12324.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2022-04-29T17:05:23.985Z",
+    "updatedAt": "2022-04-29T17:05:23.985Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "62825fdae402da13b49ec770",
+    "user": "624983eb96a5c6677bda2fff",
+    "text": "Some cats do not have fur at all.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2022-05-16T14:29:46.266Z",
+    "updatedAt": "2022-05-16T14:29:46.266Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "6266d9c1cdcef2bc79a47873",
+    "user": "6265a14a32791123867868ed",
+    "text": "Fact test.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2022-04-25T17:26:25.413Z",
+    "updatedAt": "2022-04-25T17:26:25.413Z",
+    "__v": 0
+  },
+  {
+    "status": {
+      "verified": null,
+      "sentCount": 0
+    },
+    "_id": "627225e56703b1868318b867",
+    "user": "6263c963f782346dbf66f6a0",
+    "text": "Собаки и кошки.",
+    "type": "cat",
+    "deleted": false,
+    "createdAt": "2022-05-04T07:06:13.151Z",
+    "updatedAt": "2022-05-04T07:06:13.151Z",
+    "__v": 0
+  }
+]
