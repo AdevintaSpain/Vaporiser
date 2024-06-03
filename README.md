@@ -37,8 +37,7 @@ server.store(
 server.stop()
 ```
 
-
-## Notes
+## Notes
 
 Example project uses [this server](https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html), which is being mocked in the XCUI tests.
 
