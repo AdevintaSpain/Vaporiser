@@ -7,7 +7,7 @@ A Swift mock server backed by Vapor for general purpose XCUI Testing Built using
 Add package dependency:
 ```
 dependencies: [
-    .package(url: "https://github.com/vapor/vapor.git", from: "4.92.5"),
+    .package(url: "https://github.com/AdevintaSpain/Vaporiser.git", from: "1.0.0"),
 ],
 ```
 
