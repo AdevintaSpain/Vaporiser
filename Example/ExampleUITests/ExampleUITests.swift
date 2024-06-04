@@ -27,7 +27,9 @@ enum TestData {
     case randomFacts
 
     var requestPath: String {
-        "facts/random"
+        switch self {
+        case .randomFacts: "facts/random"
+        }
     }
 
     var fileName: String {
@@ -43,7 +45,11 @@ enum TestData {
         return try? Data(contentsOf: url)
     }
     
-    var method: HTTPOperation { .GET }
+    var method: HTTPOperation { 
+        switch self {
+        case .randomFacts: .GET
+        }
+    }
 }
 
 final class ExampleUITests: XCTestCase {
@@ -65,15 +71,9 @@ final class ExampleUITests: XCTestCase {
         )
     }
 
-    override func setUpWithError() throws {
-        continueAfterFailure = false
-
-        try server.start()
-
-        try super.setUpWithError()
-    }
-
-    func testExample() throws {
+    @MainActor
+    func testExample() async throws {
+        try await server.start()
 
         try setup(request: TestData.randomFacts)
 

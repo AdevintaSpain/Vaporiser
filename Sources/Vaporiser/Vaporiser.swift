@@ -14,11 +14,9 @@ public class Vaporiser {
 
     var router = Router()
 
-    public func start() throws {
+    public func start() async throws {
         try configure(app: app)
-        Task(priority: .background) {
-            try await app.execute()
-        }
+        try await app.startup()
     }
 
     public func stop() {
