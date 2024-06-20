@@ -85,11 +85,13 @@ public struct MockData: Codable {
     public let path: String
     public let payload: Data?
     public let method: Method
+    public let returnCode: Int
 
-    public init(path: String, payload: Data? = nil, method: MockData.Method) {
+    public init(path: String, payload: Data? = nil, method: MockData.Method, returnCode: Int = 200) {
         self.path = path
         self.payload = payload
         self.method = method
+        self.returnCode = returnCode
     }
 
     var pathComponents: [PathComponent] {
