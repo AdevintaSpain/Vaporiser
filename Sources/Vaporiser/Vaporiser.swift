@@ -32,7 +32,7 @@ public class Vaporiser {
             )
         }
         
-        let body = mock.payload.map { data in Response.Body(data: data) } ?? Response.Body()
+        let body = mock.responseBody.map { data in Response.Body(data: data) } ?? Response.Body()
         return Response(
             status: .init(statusCode: mock.returnCode),
             headers: .init([("Content-Type", "application/json")]),

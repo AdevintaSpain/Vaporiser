@@ -4,16 +4,25 @@ import Vapor
 public struct MockData: Codable {
 
     public let path: String
-    public let payload: Data?
+    public let responseBody: Data?
     public let method: Method
     public let returnCode: Int
+    public let requestBody: Data?
     public let queryParameters: [URLQueryItem]?
 
-    public init(path: String, payload: Data? = nil, method: MockData.Method, queryParameters: [URLQueryItem]? = nil, returnCode: Int = 200) {
+    public init(
+        path: String,
+        responseBody: Data? = nil,
+        method: MockData.Method,
+        queryParameters: [URLQueryItem]? = nil,
+        requestBody: Data? = nil,
+        returnCode: Int = 200
+    ) {
         self.path = path
-        self.payload = payload
+        self.responseBody = responseBody
         self.method = method
         self.returnCode = returnCode
+        self.requestBody = requestBody
         self.queryParameters = queryParameters
     }
 
@@ -21,13 +30,13 @@ public struct MockData: Codable {
         path.pathComponents
     }
 
-    func matches(url: URI) -> Bool {
-        path.matches(url: url) && url.string.matches(queryParameters: queryParameters)
+    func matches(url: URI, body: String?, headers: HTTPHeaders) -> Bool {
+        path.matches(url: url) && url.string.matches(queryParameters: queryParameters) && matches(body: body, mediaType: headers.contentType)
     }
 
-    func matches(url: URI, method: Method) -> Bool {
+    func matches(url: URI, body: String?, method: Method, headers: HTTPHeaders) -> Bool {
         guard method == self.method else { return false }
-        return matches(url: url)
+        return matches(url: url, body: body, headers: headers)
     }
 
     public enum Method: Codable, Equatable {
@@ -50,11 +59,36 @@ public struct MockData: Codable {
             }
         }
     }
+
+    private func matches(body: String?, mediaType: HTTPMediaType?) -> Bool {
+        guard let requestBody = self.requestBody, let mediaType else { return true }
+        switch mediaType {
+        case .json:
+            return jsonBodyMatches(requestBody: requestBody, currentBody: body)
+        default:
+            return true // Not supported yet
+        }
+    }
+
+    private func jsonBodyMatches(requestBody: Data, currentBody: String?) -> Bool {
+        guard let currentBody = convertToDictionary(currentBody),
+              let requestBody = try? JSONSerialization.jsonObject(with: requestBody, options: []) as? [String: String] else {
+            return false
+        }
+
+        return currentBody == requestBody
+    }
+
+    private func convertToDictionary(_ text: String?) -> [String: String]? {
+        guard let text, let data = text.data(using: .utf8) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
+    }
+
 }
 
 extension Dictionary where Key == String, Value == MockData {
-    func firstMatch(url: URI) -> MockData? {
-        guard let universalPath = keys.first(where: { self[$0]?.matches(url: url) ?? false })  else {
+    func firstMatch(url: URI, body: String?, headers: HTTPHeaders) -> MockData? {
+        guard let universalPath = keys.first(where: { self[$0]?.matches(url: url, body: body, headers: headers) ?? false })  else {
             return nil
         }
         return self[universalPath]
@@ -62,7 +96,7 @@ extension Dictionary where Key == String, Value == MockData {
 }
 
 extension Array where Element == MockData {
-    func firstMatch(url: URI, method: HTTPMethod) -> MockData? {
-        first(where: { $0.matches(url: url, method: .init(httpMethod: method))})
+    func firstMatch(url: URI, body: String?, method: HTTPMethod, headers: HTTPHeaders) -> MockData? {
+        first(where: { $0.matches(url: url, body: body, method: .init(httpMethod: method), headers: headers)})
     }
 }
