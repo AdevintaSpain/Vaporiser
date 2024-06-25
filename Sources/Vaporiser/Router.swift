@@ -45,7 +45,7 @@ class Router {
     private func log(_ mock: MockData) {
         print(print("\n✅ Response for \(mock.method) \(mock.path)"))
         
-        if let payload = mock.payload, let json = try? JSONSerialization.jsonObject(with: payload, options: .fragmentsAllowed) {
+        if let payload = mock.responseBody, let json = try? JSONSerialization.jsonObject(with: payload, options: .fragmentsAllowed) {
             print(json)
             print(print("\n⬆️ End response for  \(mock.method) \(mock.path)"))
         }
@@ -55,19 +55,19 @@ class Router {
         let mock: MockData?
         switch MockData.Method(httpMethod: request.method) {
         case .GET: 
-            mock = getData.firstMatch(url: request.url)
+            mock = getData.firstMatch(url: request.url, body: request.body.string, headers: request.headers)
         case .PUT:
-            mock = putData.firstMatch(url: request.url)
+            mock = putData.firstMatch(url: request.url, body: request.body.string, headers: request.headers)
         case .HEAD:
-            mock = headData.firstMatch(url: request.url)
+            mock = headData.firstMatch(url: request.url, body: request.body.string, headers: request.headers)
         case .POST:
-            mock = postData.firstMatch(url: request.url)
+            mock = postData.firstMatch(url: request.url, body: request.body.string, headers: request.headers)
         case .PATCH:
-            mock = patchData.firstMatch(url: request.url)
+            mock = patchData.firstMatch(url: request.url, body: request.body.string, headers: request.headers)
         case .DELETE:
-            mock = deleteData.firstMatch(url: request.url)
+            mock = deleteData.firstMatch(url: request.url, body: request.body.string, headers: request.headers)
         case .OTHER:
-            mock = otherData.firstMatch(url: request.url, method: request.method)
+            mock = otherData.firstMatch(url: request.url, body: request.body.string, method: request.method, headers: request.headers)
         }
 
         guard let mock else {

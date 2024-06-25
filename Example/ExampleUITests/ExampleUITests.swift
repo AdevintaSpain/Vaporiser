@@ -65,7 +65,7 @@ final class ExampleUITests: XCTestCase {
         server.store(
             mock: MockData(
                 path: request.requestPath,
-                payload: request.data,
+                responseBody: request.data,
                 method: request.method.serverMethod
             )
         )

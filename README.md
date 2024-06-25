@@ -25,7 +25,7 @@ try server.start()
 server.store(
     mock: MockData(
         path: "path/mock/responds/to",
-        payload: Data,
+        responseBody: Data,
         method: HTTPMethod
     )
 )
