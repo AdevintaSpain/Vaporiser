@@ -9,6 +9,7 @@ public struct MockData: Codable {
     public let returnCode: Int
     public let requestBody: Data?
     public let queryParameters: [URLQueryItem]?
+    public let requestHeaders: [String: String]?
 
     public init(
         path: String,
@@ -16,14 +17,16 @@ public struct MockData: Codable {
         method: MockData.Method,
         queryParameters: [URLQueryItem]? = nil,
         requestBody: Data? = nil,
+        requestHeaders: [String: String]? = nil,
         returnCode: Int = 200
     ) {
         self.path = path
         self.responseBody = responseBody
         self.method = method
-        self.returnCode = returnCode
-        self.requestBody = requestBody
         self.queryParameters = queryParameters
+        self.requestBody = requestBody
+        self.requestHeaders = requestHeaders
+        self.returnCode = returnCode
     }
 
     var pathComponents: [PathComponent] {
@@ -31,12 +34,24 @@ public struct MockData: Codable {
     }
 
     func matches(url: URI, body: String?, headers: HTTPHeaders) -> Bool {
-        path.matches(url: url) && url.string.matches(queryParameters: queryParameters) && matches(body: body, mediaType: headers.contentType)
+        path.matches(url: url) && url.string.matches(queryParameters: queryParameters) && matches(body: body, mediaType: headers.contentType) && matches(headers: headers)
     }
 
     func matches(url: URI, body: String?, method: Method, headers: HTTPHeaders) -> Bool {
         guard method == self.method else { return false }
         return matches(url: url, body: body, headers: headers)
+    }
+
+    func matches(headers: HTTPHeaders) -> Bool {
+        guard let requestHeaders = self.requestHeaders else { return true }
+
+        for requestHeader in requestHeaders.keys {
+            if let requestHeaderValue = headers.first(name: requestHeader), requestHeaderValue == requestHeaders[requestHeader] { } else {
+                return false
+            }
+        }
+
+        return true
     }
 
     public enum Method: Codable, Equatable {
