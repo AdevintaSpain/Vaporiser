@@ -59,6 +59,10 @@ public class Vaporiser {
             try self.respond(request)
         }
 
+        app.put(.catchall) { request in
+            try self.respond(request)
+        }
+
         app.post("setMock") { request in
 
             try self.router.store(request)
