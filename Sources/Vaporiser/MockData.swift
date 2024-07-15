@@ -86,19 +86,56 @@ public struct MockData: Codable {
     }
 
     private func jsonBodyMatches(requestBody: Data, currentBody: String?) -> Bool {
-        guard let currentBody = convertToDictionary(currentBody),
-              let requestBody = try? JSONSerialization.jsonObject(with: requestBody, options: []) as? [String: String] else {
+        guard let requestBody = try? JSONSerialization.jsonObject(with: requestBody, options: []),
+              let dataBody = currentBody?.data(using: .utf8),
+              let currentBody = try? JSONSerialization.jsonObject(with: dataBody, options: []) else {
             return false
         }
-
-        return currentBody == requestBody
+        return matchJSONLevel(matching: requestBody, from: currentBody)
     }
 
-    private func convertToDictionary(_ text: String?) -> [String: String]? {
-        guard let text, let data = text.data(using: .utf8) else { return nil }
-        return try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
-    }
+    func matchJSONLevel(matching: Any, from: Any) -> Bool {
 
+        /// - Top level object is an NSArray or NSDictionary
+        /// - All objects are NSString, NSNumber, NSArray, NSDictionary, or NSNull
+        /// - All dictionary keys are NSStrings
+        /// - NSNumbers are not NaN or infinity
+
+        if let m = matching as? NSArray, let f = from as? NSArray {
+            var idx = 0
+            for element in m {
+                if idx < f.count {
+                    if !matchJSONLevel(matching: element, from: f[idx]) {
+                        return false
+                    }
+                } else {
+                    return false
+                }
+                idx += 1
+            }
+            return true
+        } else if let m = matching as? NSDictionary, let f = from as? NSDictionary {
+            let matchingKeys = m.allKeys
+            for key in matchingKeys {
+                if let fromValue = f[key], let matchingValue = m[key] {
+                    if !matchJSONLevel(matching: matchingValue, from: fromValue) {
+                        return false
+                    }
+                } else {
+                    return false
+                }
+            }
+            return true
+        } else if let m = matching as? NSString, let f = from as? NSString {
+            return m.isEqual(to: f as String)
+        } else if let m = matching as? NSNumber, let f = from as? NSNumber {
+            return m.isEqual(to: f)
+        } else if let m = matching as? NSNull, let f = from as? NSNull {
+            return m.isEqual(f)
+        } else {
+            return false
+        }
+    }
 }
 
 extension Dictionary where Key == String, Value == MockData {
