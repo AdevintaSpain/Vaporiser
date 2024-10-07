@@ -19,7 +19,7 @@ public class Vaporiser {
         try await app.startup()
     }
 
-    func getCurrentPort() -> Int? {
+    public func getCurrentPort() -> Int? {
         (app.server as? HTTPServer)?.localAddress?.port
     }
 
