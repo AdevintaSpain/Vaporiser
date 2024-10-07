@@ -14,9 +14,13 @@ public class Vaporiser {
 
     var router = Router()
 
-    public func start() async throws {
-        try configure(app: app)
+    public func start(port: Int = 8080) async throws {
+        try configure(app: app, port: port)
         try await app.startup()
+    }
+
+    func getCurrentPort() -> Int? {
+        (app.server as? HTTPServer)?.localAddress?.port
     }
 
     public func stop() {
@@ -44,8 +48,9 @@ public class Vaporiser {
         router.store(mock)
     }
 
-    func configure(app: Application) throws {
+    func configure(app: Application, port: Int) throws {
         app.routes.defaultMaxBodySize = "1mb"
+        app.http.server.configuration.port = port
 
         app.get(.catchall) { request in
             try self.respond(request)
